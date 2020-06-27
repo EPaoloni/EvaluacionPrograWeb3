@@ -129,7 +129,9 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CantidadTotalPremiosApiController.cs" />
     <Compile Include="Controllers\PremiosController.cs" />
     <Compile Include="Models\Partials\Competidor.cs" />
     <Compile Include="Models\Partials\PremiosCompetidor.cs" />
@@ -191,6 +193,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Repository\" />
     <Folder Include="SQL\" />
+    <Folder Include="Views\CantidadTotalPremiosApi\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

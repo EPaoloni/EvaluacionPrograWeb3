@@ -40,5 +40,10 @@ namespace EvaluacionAprendizaje.Services
 
             context.SaveChanges();
         }
+
+        public int CalcularTotalPremiosPorAnio(int anio)
+        {
+            return context.PremiosCompetidor.Where(premios => premios.anio == anio).Sum(element => element.cantidadPremios);
+        }
     }
 }
