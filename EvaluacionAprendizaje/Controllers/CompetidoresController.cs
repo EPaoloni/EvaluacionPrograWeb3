@@ -38,14 +38,19 @@ namespace EvaluacionAprendizaje.Controllers
             return View();
         }
 
-        public ActionResult RealizarAltaCompetidor(string nombreCompetidor)
+        public ActionResult RealizarAltaCompetidor(string nombre)
         {
-            CompetidoresService competidoresService = new CompetidoresService(context);
+            if (!ModelState.IsValid)
+            {
+                return RedirectToAction("AltaCompetidor");
+            } else
+            {
+                CompetidoresService competidoresService = new CompetidoresService(context);
 
-            competidoresService.AltaCompetidor(nombreCompetidor);
+                competidoresService.AltaCompetidor(nombre);
 
-            return RedirectToAction("Index");
-
+                return RedirectToAction("Index");
+            }
         }
     }
 }

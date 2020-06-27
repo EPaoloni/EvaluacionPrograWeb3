@@ -3,7 +3,7 @@ go
 
 create table Competidor(
 	id int Primary Key identity,
-	nombre varchar(30) not null
+	nombre varchar(100) not null
 )
 go
 

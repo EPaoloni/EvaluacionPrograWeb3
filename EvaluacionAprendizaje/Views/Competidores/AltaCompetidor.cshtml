@@ -1,4 +1,5 @@
-﻿
+﻿@model EvaluacionAprendizaje.Models.Partials.Competidor
+
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -6,8 +7,9 @@
 <h2>Alta Competidor</h2>
 
 <form class="container" method="get" action="./RealizarAltaCompetidor">
-    <label for="nombreCompetidor">Nombre: </label>
-    <input id="nombreCompetidor" name="nombreCompetidor" class="form-control"/>
+    <label for="nombre">Nombre: </label>
+    @Html.EditorFor(o => o.nombre)
+    @Html.ValidationMessageFor(o => o.nombre)
     <button class="btn btn-primary">Dar de Alta</button>
 </form>
 
