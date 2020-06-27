@@ -7,18 +7,18 @@ using EvaluacionAprendizaje.Models;
 
 namespace EvaluacionAprendizaje.Services
 {
-    public class CompetidoresService
+    public class PremiosService
     {
         evaluacion2Entities context;
-        public CompetidoresService(evaluacion2Entities context)
+        public PremiosService(evaluacion2Entities context)
         {
             this.context = context;
         }
 
-        public List<Competidor> ObtenerTodos()
+        public List<PremiosCompetidor> ObtenerTodos()
         {
-            List<Competidor> competidores = context.Competidor.ToList(); ;
-            return competidores;
+            List<PremiosCompetidor> premios = context.PremiosCompetidor.ToList(); ;
+            return premios;
         }
 
         public void AltaCompetidor(string nombre)
@@ -27,7 +27,7 @@ namespace EvaluacionAprendizaje.Services
             nuevoCompetidor.nombre = nombre;
 
             context.Competidor.Add(nuevoCompetidor);
-
+            
             context.SaveChanges();
         }
     }
