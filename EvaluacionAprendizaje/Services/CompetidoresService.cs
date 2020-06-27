@@ -20,5 +20,21 @@ namespace EvaluacionAprendizaje.Services
             List<Competidor> competidores = context.Competidor.ToList(); ;
             return competidores;
         }
+
+        public void AltaCompetidor(string nombre)
+        {
+            Competidor nuevoCompetidor = new Competidor();
+            nuevoCompetidor.nombre = nombre;
+
+            context.Competidor.Add(nuevoCompetidor);
+            try
+            {
+                context.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
     }
 }

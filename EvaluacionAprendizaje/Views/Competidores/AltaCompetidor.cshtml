@@ -1,0 +1,16 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Competidores:</h2>
+
+<form class="container" method="get" action="./RealizarAltaCompetidor">
+    <label for="nombreCompetidor">Nombre: </label>
+    <input id="nombreCompetidor" name="nombreCompetidor" class="form-control"/>
+    <button class="btn btn-primary">Dar de Alta</button>
+</form>
+
+<div class="container">
+    <a class="btn btn-danger" href="./">Cancelar</a>
+</div>

@@ -169,6 +169,7 @@
     <Content Include="Views\Home\Bienvenido.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Competidores\ListaCompetidores.cshtml" />
+    <Content Include="Views\Competidores\AltaCompetidor.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
