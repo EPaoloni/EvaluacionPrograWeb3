@@ -1,0 +1,25 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Competidores:</h2>
+
+<table class="table">
+    <thead>
+        <th>Nombre</th>
+    </thead>
+    <tbody>
+        @{ foreach(var competidor in ViewBag.competidores){
+            <tr>
+                <td>@competidor.nombre</td>
+            </tr>
+            }
+
+        }
+    </tbody>
+</table>
+
+<div class="container">
+    <a class="btn btn-primary" href="./AltaCompetidor">Crear Nuevo Competidor</a>
+</div>
