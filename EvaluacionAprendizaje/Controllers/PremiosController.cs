@@ -22,6 +22,26 @@ namespace EvaluacionAprendizaje.Controllers
             return RedirectToAction("ListaPremios");
         }
 
+        public ActionResult AltaPremios()
+        {
+            CompetidoresService competidoresService = new CompetidoresService(context);
+
+            List<Competidor> competidores = competidoresService.ObtenerTodos();
+
+            ViewBag.competidores = competidores;
+
+            return View();
+        }
+
+        public ActionResult RealizarAltaPremios(int idCompetidor, int anio, int cantidadPremios)
+        {
+            PremiosService premiosService = new PremiosService(context);
+
+            premiosService.AltaPremios(idCompetidor, anio, cantidadPremios);
+
+            return RedirectToAction("Index");
+        }
+
         public ActionResult ListaPremios()
         {
             PremiosService premiosService = new PremiosService(context);

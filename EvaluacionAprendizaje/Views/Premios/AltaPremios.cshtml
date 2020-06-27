@@ -1,0 +1,28 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Alta Premio</h2>
+
+<form class="container" method="get" action="./RealizarAltaPremios">
+    <label for="idCompetidor">Competidor: </label>
+    <select id="idCompetidor" name="idCompetidor" class="form-control">
+        <option disabled selected></option>
+        @{ 
+            foreach(var competidor in ViewBag.competidores)
+            {
+                <option value="@competidor.id">@competidor.nombre</option>
+            }
+        }
+    </select>
+    <label for="anio">Año: </label>
+    <input id="anio" name="anio" class="form-control" />
+    <label for="cantidadPremios">Cantidad de Premios: </label>
+    <input id="cantidadPremios" name="cantidadPremios" class="form-control" />
+    <button class="btn btn-primary">Dar de Alta</button>
+</form>
+
+<div class="container">
+    <a class="btn btn-danger" href="./">Cancelar</a>
+</div>

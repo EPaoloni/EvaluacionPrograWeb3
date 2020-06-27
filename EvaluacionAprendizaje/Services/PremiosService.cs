@@ -21,13 +21,23 @@ namespace EvaluacionAprendizaje.Services
             return premios;
         }
 
-        public void AltaCompetidor(string nombre)
+        public void AltaPremios(int idCompetidor, int anio, int cantidadPremios)
         {
-            Competidor nuevoCompetidor = new Competidor();
-            nuevoCompetidor.nombre = nombre;
+            PremiosCompetidor premiosDelMismoAnio = context.PremiosCompetidor.FirstOrDefault(premios => premios.idCompetidor == idCompetidor && premios.anio == anio);
 
-            context.Competidor.Add(nuevoCompetidor);
-            
+            if(premiosDelMismoAnio == null)
+            {
+                PremiosCompetidor nuevoPremiosCompetidor = new PremiosCompetidor();
+                nuevoPremiosCompetidor.idCompetidor = idCompetidor;
+                nuevoPremiosCompetidor.anio = anio;
+                nuevoPremiosCompetidor.cantidadPremios = cantidadPremios;
+
+                context.PremiosCompetidor.Add(nuevoPremiosCompetidor);
+            } else
+            {
+                premiosDelMismoAnio.cantidadPremios = cantidadPremios;
+            }
+
             context.SaveChanges();
         }
     }
