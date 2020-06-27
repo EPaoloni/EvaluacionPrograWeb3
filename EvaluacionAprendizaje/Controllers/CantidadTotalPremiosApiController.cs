@@ -15,12 +15,11 @@ namespace PracticaEA2.Controllers
         }
 
         // GET api/<controller>
-        public JsonResult<int> Get()
+        public JsonResult<int> Get(int id)
         {
-            int anio = 2020;
             PremiosService premiosService = new PremiosService(context);
 
-            int totalDePremios = premiosService.CalcularTotalPremiosPorAnio(anio);
+            int totalDePremios = premiosService.CalcularTotalPremiosPorAnio(id);
 
             return Json(totalDePremios);
         }
