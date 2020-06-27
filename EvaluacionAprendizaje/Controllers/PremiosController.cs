@@ -35,11 +35,14 @@ namespace EvaluacionAprendizaje.Controllers
 
         public ActionResult RealizarAltaPremios(int idCompetidor, int anio, int cantidadPremios)
         {
-            PremiosService premiosService = new PremiosService(context);
+            if (ModelState.IsValid)
+            {
+                PremiosService premiosService = new PremiosService(context);
 
-            premiosService.AltaPremios(idCompetidor, anio, cantidadPremios);
-
-            return RedirectToAction("Index");
+                premiosService.AltaPremios(idCompetidor, anio, cantidadPremios);
+            }
+                return RedirectToAction("Index");
+            
         }
 
         public ActionResult ListaPremios()

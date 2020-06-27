@@ -17,7 +17,7 @@ namespace EvaluacionAprendizaje.Services
 
         public List<PremiosCompetidor> ObtenerTodos()
         {
-            List<PremiosCompetidor> premios = context.PremiosCompetidor.ToList(); ;
+            List<PremiosCompetidor> premios = context.PremiosCompetidor.ToList();
             return premios;
         }
 

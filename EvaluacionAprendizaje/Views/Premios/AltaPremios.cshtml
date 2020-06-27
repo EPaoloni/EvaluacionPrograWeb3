@@ -1,4 +1,4 @@
-﻿
+﻿@model EvaluacionAprendizaje.Models.Partials.PremiosCompetidor
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -6,20 +6,28 @@
 <h2>Alta Premio</h2>
 
 <form class="container" method="get" action="./RealizarAltaPremios">
-    <label for="idCompetidor">Competidor: </label>
-    <select id="idCompetidor" name="idCompetidor" class="form-control">
-        <option disabled selected></option>
-        @{ 
-            foreach(var competidor in ViewBag.competidores)
-            {
-                <option value="@competidor.id">@competidor.nombre</option>
+    <div class="form-group">
+        <label for="idCompetidor">Competidor: </label>
+        <select id="idCompetidor" name="idCompetidor" class="form-control">
+            @{
+                foreach (var competidor in ViewBag.competidores)
+                {
+                    <option value="@competidor.id">@competidor.nombre</option>
+                }
             }
-        }
-    </select>
-    <label for="anio">Año: </label>
-    <input id="anio" name="anio" class="form-control" />
-    <label for="cantidadPremios">Cantidad de Premios: </label>
-    <input id="cantidadPremios" name="cantidadPremios" class="form-control" />
+        </select>
+        @Html.ValidationMessageFor(o => o.idCompetidor)
+    </div>
+    <div class="form-group">
+        <label for="anio">Año: </label>
+        @Html.EditorFor(o => o.anio)
+        @Html.ValidationMessageFor(o => o.anio)
+    </div>
+    <div class="form-group">
+        <label for="cantidadPremios">Cantidad de Premios: </label>
+        @Html.EditorFor(o => o.cantidadPremios)
+        @Html.ValidationMessageFor(o => o.cantidadPremios)
+    </div>
     <button class="btn btn-primary">Dar de Alta</button>
 </form>
 

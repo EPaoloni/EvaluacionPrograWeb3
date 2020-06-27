@@ -10,7 +10,7 @@ namespace EvaluacionAprendizaje.Models.Partials
     public partial class Competidor
     {
         [Required(ErrorMessage="Nombre Requerido")]
-        [MaxLength(100)]
+        [MaxLength(100, ErrorMessage = "El nombre no puede tener más de 100 caracteres")]
         public string nombre { get; set; }
     }
 }
