@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="evaluacion2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Competidor">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PremiosCompetidor">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="cantidadPremios" Type="int" Nullable="false" />
+          <Property Name="anio" Type="int" Nullable="false" />
+          <Property Name="idCompetidor" Type="int" />
+        </EntityType>
+        <Association Name="FK__PremiosCo__idCom__30F848ED">
+          <End Role="Competidor" Type="Self.Competidor" Multiplicity="0..1" />
+          <End Role="PremiosCompetidor" Type="Self.PremiosCompetidor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Competidor">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="PremiosCompetidor">
+              <PropertyRef Name="idCompetidor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="evaluacion2ModelStoreContainer">
+          <EntitySet Name="Competidor" EntityType="Self.Competidor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PremiosCompetidor" EntityType="Self.PremiosCompetidor" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__PremiosCo__idCom__30F848ED" Association="Self.FK__PremiosCo__idCom__30F848ED">
+            <End Role="Competidor" EntitySet="Competidor" />
+            <End Role="PremiosCompetidor" EntitySet="PremiosCompetidor" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="evaluacion2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Competidor">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="PremiosCompetidor" Relationship="Self.FK__PremiosCo__idCom__30F848ED" FromRole="Competidor" ToRole="PremiosCompetidor" />
+        </EntityType>
+        <EntityType Name="PremiosCompetidor">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="cantidadPremios" Type="Int32" Nullable="false" />
+          <Property Name="anio" Type="Int32" Nullable="false" />
+          <Property Name="idCompetidor" Type="Int32" />
+          <NavigationProperty Name="Competidor" Relationship="Self.FK__PremiosCo__idCom__30F848ED" FromRole="PremiosCompetidor" ToRole="Competidor" />
+        </EntityType>
+        <Association Name="FK__PremiosCo__idCom__30F848ED">
+          <End Role="Competidor" Type="Self.Competidor" Multiplicity="0..1" />
+          <End Role="PremiosCompetidor" Type="Self.PremiosCompetidor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Competidor">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="PremiosCompetidor">
+              <PropertyRef Name="idCompetidor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="evaluacion2Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Competidor" EntityType="Self.Competidor" />
+          <EntitySet Name="PremiosCompetidor" EntityType="Self.PremiosCompetidor" />
+          <AssociationSet Name="FK__PremiosCo__idCom__30F848ED" Association="Self.FK__PremiosCo__idCom__30F848ED">
+            <End Role="Competidor" EntitySet="Competidor" />
+            <End Role="PremiosCompetidor" EntitySet="PremiosCompetidor" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="evaluacion2ModelStoreContainer" CdmEntityContainer="evaluacion2Entities">
+          <EntitySetMapping Name="Competidor">
+            <EntityTypeMapping TypeName="evaluacion2Model.Competidor">
+              <MappingFragment StoreEntitySet="Competidor">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PremiosCompetidor">
+            <EntityTypeMapping TypeName="evaluacion2Model.PremiosCompetidor">
+              <MappingFragment StoreEntitySet="PremiosCompetidor">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="cantidadPremios" ColumnName="cantidadPremios" />
+                <ScalarProperty Name="anio" ColumnName="anio" />
+                <ScalarProperty Name="idCompetidor" ColumnName="idCompetidor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
