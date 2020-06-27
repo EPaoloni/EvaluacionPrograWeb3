@@ -4,24 +4,24 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="evaluacion2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="evaluacion2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Competidor">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nombre" Type="varchar" MaxLength="30" Nullable="false" />
         </EntityType>
         <EntityType Name="PremiosCompetidor">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="cantidadPremios" Type="int" Nullable="false" />
           <Property Name="anio" Type="int" Nullable="false" />
           <Property Name="idCompetidor" Type="int" />
         </EntityType>
-        <Association Name="FK__PremiosCo__idCom__30F848ED">
+        <Association Name="FK__PremiosCo__idCom__35BCFE0A">
           <End Role="Competidor" Type="Self.Competidor" Multiplicity="0..1" />
           <End Role="PremiosCompetidor" Type="Self.PremiosCompetidor" Multiplicity="*" />
           <ReferentialConstraint>
@@ -36,13 +36,12 @@
         <EntityContainer Name="evaluacion2ModelStoreContainer">
           <EntitySet Name="Competidor" EntityType="Self.Competidor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PremiosCompetidor" EntityType="Self.PremiosCompetidor" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__PremiosCo__idCom__30F848ED" Association="Self.FK__PremiosCo__idCom__30F848ED">
+          <AssociationSet Name="FK__PremiosCo__idCom__35BCFE0A" Association="Self.FK__PremiosCo__idCom__35BCFE0A">
             <End Role="Competidor" EntitySet="Competidor" />
             <End Role="PremiosCompetidor" EntitySet="PremiosCompetidor" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="evaluacion2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
